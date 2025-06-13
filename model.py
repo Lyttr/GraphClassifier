@@ -26,7 +26,7 @@ class GINClassifier(nn.Module):
     def __init__(self, num_features, num_classes, hidden_dim=64):
         super(GINClassifier, self).__init__()
         
-        # MLP for GIN layers
+       
         self.mlp1 = nn.Sequential(
             nn.Linear(num_features, hidden_dim),
             nn.BatchNorm1d(hidden_dim),
@@ -45,7 +45,7 @@ class GINClassifier(nn.Module):
             nn.ReLU()
         )
         
-        # GIN layers
+       
         self.conv1 = GINConv(self.mlp1)
         self.conv2 = GINConv(self.mlp2)
         
