@@ -111,8 +111,7 @@ class Trainer:
         predictions = np.concatenate(predictions)
         true_labels = np.concatenate(true_labels)
         accuracy = correct / len(test_data)
-        
-        # Calculate per-class metrics
+
         class_names = ['Facebook', 'Enron', 'Collaboration']
         cm = confusion_matrix(true_labels, predictions)
         report = classification_report(true_labels, predictions, 

@@ -41,7 +41,6 @@ def parse_args():
 
 def save_results(train_losses, val_losses, best_accuracy, best_metrics, args):
     """Save training results and plots"""
-    # Remove class_distribution from metrics for JSON serialization
     metrics_for_json = {k: v for k, v in best_metrics.items() if k != 'class_distribution'}
     
     results = {
