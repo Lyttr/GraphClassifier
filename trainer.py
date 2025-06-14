@@ -118,11 +118,10 @@ class Trainer:
                                      target_names=class_names,
                                      output_dict=True)
         
-        # Add class distribution information
+    
         class_distribution = {name: int(np.sum(true_labels == i)) for i, name in enumerate(class_names)}
         report['class_distribution'] = class_distribution
-        
-        # Clean up the report dictionary
+ 
         metrics = {}
         for class_name in class_names:
             metrics[class_name] = {
@@ -189,8 +188,7 @@ class Trainer:
                     best_accuracy = accuracy
                     best_metrics = metrics
                     torch.save(self.model.state_dict(), f'{output_dir}/best_model.pth')
-            
-            # Early stopping check
+
             early_stopping(val_loss)
             if early_stopping.early_stop:
                 print(f'Early stopping triggered at epoch {epoch+1}')

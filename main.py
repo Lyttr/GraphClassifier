@@ -81,11 +81,11 @@ def main():
         subgraph_size=args.subgraph_size
     )
     
-    # Split data into train, validation and test sets
+  
     train_data, temp_data = train_test_split(data_list, test_size=0.3, random_state=42)
     val_data, test_data = train_test_split(temp_data, test_size=0.5, random_state=42)
     
-    # Initialize model
+   
     if args.model == 'gcn':
         model = GNNClassifier(num_features=3, num_classes=3)
     elif args.model == 'gin':
@@ -97,7 +97,7 @@ def main():
     elif args.model == 'sage':
         model = GraphSAGEClassifier(num_features=3, num_classes=3,
                                   hidden_dim=args.hidden_dim)
-    else:  # transformer
+    else: 
         model = GraphTransformerClassifier(num_features=3, num_classes=3,
                                          hidden_dim=args.hidden_dim,
                                          num_heads=args.num_heads)
